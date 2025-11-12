@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Reservation System</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 2rem; background: #f6f9fc; }
+    h1 { color: #1a237e; }
+    h2 { margin-top: 2rem; color: #3949ab; }
+    form { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fff; margin-bottom: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    label { display:block; margin: .5rem 0 .25rem; font-weight: bold; }
+    input, select { width: 100%; padding: .5rem; margin-bottom: .5rem; border-radius: 5px; border: 1px solid #bbb; }
+    button { padding: .5rem 1rem; background: #1a73e8; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0b59d0; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .muted { color: #666; font-size: .9rem; }
+    pre { background: #f1f1f1; padding: .75rem; border-radius: 6px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <h1>🚆 Online Reservation System</h1>
+
+  <section id="auth">
+    <h2>1️⃣ Login / Register</h2>
+    <form id="registerForm">
+      <h3>Register</h3>
+      <label>Name</label>
+      <input id="regName" required />
+      <label>Email</label>
+      <input id="regEmail" type="email" required />
+      <label>Password</label>
+      <input id="regPass" type="password" required />
+      <button>Register</button>
+      <div class="muted">Already registered? Use Login below.</div>
+    </form>
+
+    <form id="loginForm">
+      <h3>Login</h3>
+      <label>Email</label>
+      <input id="logEmail" type="email" required />
+      <label>Password</label>
+      <input id="logPass" type="password" required />
+      <button>Login</button>
+      <div id="whoami" class="muted"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>2️⃣ Reservation</h2>
+    <form id="reserveForm">
+      <div class="row">
+        <div>
+          <label>Train Number</label>
+          <input id="trainNumber" required />
+        </div>
+        <div>
+          <label>Train Name (auto)</label>
+          <input id="trainName" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Class Type</label>
+          <select id="classType" required>
+            <option value="">-- choose --</option>
+          </select>
+        </div>
+        <div>
+          <label>Date of Journey</label>
+          <input id="journeyDate" type="date" required />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>From (Station Code)</label>
+          <input id="fromStation" placeholder="e.g. HYB" required />
+        </div>
+        <div>
+          <label>To (Station Code)</label>
+          <input id="toStation" placeholder="e.g. VSKP" required />
+        </div>
+      </div>
+      <button>Insert / Book</button>
+    </form>
+
+    <pre id="reserveResult"></pre>
+  </section>
+
+  <section>
+    <h2>3️⃣ Cancellation</h2>
+    <form id="lookupForm">
+      <label>PNR</label>
+      <input id="lookupPNR" required />
+      <button>Lookup</button>
+    </form>
+
+    <pre id="lookupResult"></pre>
+
+    <form id="cancelForm" style="display:none">
+      <input id="cancelPNR" type="hidden" />
+      <button id="cancelBtn" type="button">Confirm Cancel</button>
+    </form>
+  </section>
+
+  <script>
+    let token = null;
+
+    function setToken(t, user) {
+      token = t;
+      const who = document.getEl
+    }
